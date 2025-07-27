@@ -25,9 +25,20 @@ This project consists of creating a minimalistic shell that can:
 ft_minishell/
 │
 ├── minishell.c        # Main file
-├── includes/          # Header files
-├── execution/          # execution files
-├── parcing/          # execution files
+├── execution
+├── includes
+│   └── parsing
+├── libft
+│   └── ft_fprintf
+├── parsing
+│   ├── __media
+│   ├── ast
+│   ├── env
+│   ├── expansion
+│   │   └── wildcards
+│   ├── pre_ast
+│   ├── syntx_check
+│   └── tokenize
 ├── Makefile
 └── README.md
 ```
@@ -37,7 +48,7 @@ ft_minishell/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/zakaria-jaddad/ft_minishell.git
+git clone https://github.com/LawKmu/shell-imzine.git
 cd ft_minishell
 ```
 
