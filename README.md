@@ -1,73 +1,117 @@
-# minishell 
+# Minishell
 
-## 📚 Project Description
+## 📖 Overview
 
-This project consists of creating a minimalistic shell that can:
+**Minishell** is a simplified implementation of a Unix shell, developed as part of the **42 School curriculum**.  
+It replicates core functionalities of `bash` while offering a controlled environment to explore **process management**, **command parsing**, **file descriptors**, and **signal handling** in C.
 
-- Parse and execute user commands
-- Handle redirections (`<`, `>`, `>>`)
-- Handle pipes (`|`)
-- Support environment variable expansion (`$`)
-- Manage built-in commands
-- Implement basic signal handling (`ctrl + C`, `ctrl + \`, `ctrl + D`)
-- Execute commands with correct file descriptor handling and child processes
+Our version achieved **full score** and supports **robust command execution**, including pipes, redirections, variable expansion, and built-in commands.
 
+---
+
+## ✨ Features
+
+- **Command Parsing & Execution**
+  - Executes both built-in and external commands.
+  - Handles multiple arguments, quoting, and special characters.
+- **Redirections**
+  - Input redirection: `<`
+  - Output redirection: `>`
+  - Append redirection: `>>`
+- **Pipes**
+  - Supports multiple chained commands using `|`.
+- **Environment Variable Expansion**
+  - `$VAR` expansion based on current environment.
+- **Built-in Commands**
+  - `echo`, `cd`, `pwd`, `export`, `unset`, `env`, `exit`
+- **Signal Handling**
+  - `Ctrl + C` — Interrupt current command without exiting the shell.
+  - `Ctrl + \` — Quit signal handling.
+  - `Ctrl + D` — Exit shell gracefully.
+- **Error Management**
+  - Syntax checks for unclosed quotes, invalid redirections, etc.
+  - Proper file descriptor cleanup to prevent leaks.
+
+---
 
 ## 📦 Dependencies
 
-- Language: C
-- Compilation: `cc` with flags `-Wall -Wextra -Werror -lreadline`
+- **Language:** C  
+- **Compiler:** `cc`  
+- **Flags:** `-Wall -Wextra -Werror -lreadline`  
+- **Libraries:** [GNU Readline](https://tiswww.case.edu/php/chet/readline/rltop.html) for input handling.
 
+---
 
-## 📁 Project Structure
+## 📂 Project Structure
 
 ```
 ft_minishell/
 │
-├── minishell.c        # Main file
-├── execution
-├── includes
-│   └── parsing
-├── libft
-│   └── ft_fprintf
-├── parsing
-│   ├── __media
-│   ├── ast
-│   ├── env
-│   ├── expansion
-│   │   └── wildcards
-│   ├── pre_ast
-│   ├── syntx_check
-│   └── tokenize
+├── minishell.c                # Entry point
+├── execution/                  # Command execution logic
+├── includes/                   # Header files
+│   └── parsing/
+├── libft/                      # Custom C standard library functions
+│   └── ft_fprintf/
+├── parsing/                    # Parsing and tokenizing
+│   ├── ast/                    # Abstract Syntax Tree
+│   ├── env/                    # Environment variable handling
+│   ├── expansion/              # Variable and wildcard expansion
+│   │   └── wildcards/
+│   ├── pre_ast/
+│   ├── syntx_check/            # Syntax validation
+│   └── tokenize/               # Token generation
 ├── Makefile
 └── README.md
 ```
 
-## ⚙️ How to Use
+---
 
-### 1. Clone the repository
+## ⚙️ Installation & Usage
 
+### 1️⃣ Clone the repository
 ```bash
 git clone https://github.com/LawKmu/shell-imzine.git
 cd ft_minishell
 ```
 
-### 2. Compile
-
+### 2️⃣ Compile
 ```bash
 make
 ```
 
-### 3. Run
-
+### 3️⃣ Run
 ```bash
 ./minishell
 ```
-You'll see a prompt where you can start typing commands
+You will see a **custom prompt** where you can type commands, e.g.:
+```bash
+ft_minishell$ echo "Hello World"
+Hello World
+```
 
+---
 
+## 🧠 Key Concepts Learned
 
-## 🧠 Concepts Learned
-- Process creation with `fork`, `execve`, and `wait`
+- **Process Management**  
+  - Using `fork()`, `execve()`, and `wait()` for command execution.
+- **Pipes & File Descriptors**  
+  - Redirecting input/output between processes.
+- **Signals**  
+  - Handling asynchronous events with `signal()` and `sigaction()`.
+- **Parsing & Tokenization**  
+  - Building a shell parser from scratch (tokens → AST → execution).
+- **Memory Management**  
+  - Avoiding leaks and ensuring safe cleanup.
+- **Environment Handling**  
+  - Modifying and expanding environment variables dynamically.
 
+---
 
+## 🏆 Authors
+- **[Mouad Ait El Aouad](https://github.com/LawKmu/)**  
+- **[Zakaria Jaddad](https://github.com/zakaria-jaddad)**
+
+> This project is part of the **42 curriculum** and adheres to its coding and formatting standards.
